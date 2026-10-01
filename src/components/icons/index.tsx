@@ -244,3 +244,50 @@ export function MailIcon(props: IconProps) {
     </svg>
   );
 }
+
+export function LockIcon(props: IconProps) {
+  return (
+    <svg {...baseProps} {...props}>
+      <rect x="4.5" y="10.5" width="15" height="10" rx="2.2" />
+      <path d="M7.5 10.5v-3a4.5 4.5 0 0 1 9 0v3" />
+    </svg>
+  );
+}
+
+export function EyeOffIcon(props: IconProps) {
+  return (
+    <svg {...baseProps} {...props}>
+      <path d="M3.5 3.5l17 17" />
+      <path d="M10.6 6.1A10.7 10.7 0 0 1 12 6c6 0 9.5 6 9.5 6a15 15 0 0 1-3.3 3.9M7.6 7.7C4.8 9.3 2.5 12 2.5 12s3.5 6 9.5 6c1.2 0 2.3-.2 3.3-.6" />
+      <path d="M9.7 10.2a3.1 3.1 0 0 0 4.2 4.2" />
+    </svg>
+  );
+}
+
+export function UserIcon(props: IconProps) {
+  return (
+    <svg {...baseProps} {...props}>
+      <circle cx="12" cy="8.2" r="3.4" />
+      <path d="M4.8 20c0-3.7 3.2-6.4 7.2-6.4s7.2 2.7 7.2 6.4" />
+    </svg>
+  );
+}
+
+export function IdCardIcon(props: IconProps) {
+  return (
+    <svg {...baseProps} {...props}>
+      <rect x="2.5" y="5" width="19" height="14" rx="2.2" />
+      <circle cx="8.3" cy="11" r="1.9" />
+      <path d="M5.3 15.8c.5-1.5 1.7-2.3 3-2.3s2.5.8 3 2.3M13.5 9.5h5.2M13.5 12.5h5.2M13.5 15.5h3.4" />
+    </svg>
+  );
+}
+
+export function CalendarIcon(props: IconProps) {
+  return (
+    <svg {...baseProps} {...props}>
+      <rect x="3.5" y="5" width="17" height="15" rx="2.2" />
+      <path d="M3.5 9.5h17M8 3.2v3.6M16 3.2v3.6" />
+    </svg>
+  );
+}

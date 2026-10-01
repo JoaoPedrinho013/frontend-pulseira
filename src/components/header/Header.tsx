@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { siteConfig } from '../../data/siteConfig';
-import { Button } from '../ui/Button';
+import { LinkButton } from '../ui/LinkButton';
 import { IconButton } from '../ui/IconButton';
 import { ThemeToggle } from '../theme-toggle/ThemeToggle';
 import { CloseIcon, MenuIcon } from '../icons';
@@ -53,7 +53,9 @@ export function Header() {
           </nav>
 
           <div className={styles.actions}>
-            <Button variant="secondary">Entrar</Button>
+            <LinkButton variant="secondary" to="/login">
+              Entrar
+            </LinkButton>
             <ThemeToggle />
           </div>
 
@@ -86,13 +88,14 @@ export function Header() {
               </NavLink>
             ))}
           </nav>
-          <Button
+          <LinkButton
             variant="secondary"
             className={styles.mobileMenuButton}
+            to="/login"
             onClick={() => setIsMenuOpen(false)}
           >
             Entrar
-          </Button>
+          </LinkButton>
           <div className={styles.mobileMenuThemeRow}>
             <span>Tema</span>
             <ThemeToggle />
