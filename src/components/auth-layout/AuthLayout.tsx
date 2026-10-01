@@ -1,13 +1,14 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { siteConfig } from '../../data/siteConfig';
+import { authPanelFeatures } from '../../data/authPanelFeatures';
+import { ShieldIcon } from '../icons';
 import { ThemeToggle } from '../theme-toggle/ThemeToggle';
 import styles from './AuthLayout.module.css';
 
 interface AuthLayoutProps {
   panelTitle: string;
   panelDescription: string;
-  panelImage: string;
   formTitleId: string;
   formTitle: string;
   formDescription: string;
@@ -17,7 +18,6 @@ interface AuthLayoutProps {
 export function AuthLayout({
   panelTitle,
   panelDescription,
-  panelImage,
   formTitleId,
   formTitle,
   formDescription,
@@ -26,12 +26,24 @@ export function AuthLayout({
   return (
     <div className={styles.layout}>
       <aside className={styles.panel} aria-hidden="true">
+        <div className={styles.panelGlowOne} />
+        <div className={styles.panelGlowTwo} />
         <div className={styles.panelContent}>
+          <div className={styles.panelBadge}>
+            <ShieldIcon />
+          </div>
           <h2 className={styles.panelTitle}>{panelTitle}</h2>
           <p className={styles.panelDescription}>{panelDescription}</p>
-          <div className={styles.panelImageWrapper}>
-            <img className={styles.panelImage} src={panelImage} alt="" />
-          </div>
+          <ul className={styles.panelFeatures}>
+            {authPanelFeatures.map(({ icon: Icon, label }) => (
+              <li key={label} className={styles.panelFeature}>
+                <span className={styles.panelFeatureIcon}>
+                  <Icon />
+                </span>
+                {label}
+              </li>
+            ))}
+          </ul>
         </div>
       </aside>
 
@@ -51,11 +63,13 @@ export function AuthLayout({
         </div>
 
         <div className={styles.formBody}>
-          <h1 id={formTitleId} className={styles.formTitle}>
-            {formTitle}
-          </h1>
-          <p className={styles.formDescription}>{formDescription}</p>
-          {children}
+          <div className={styles.formCard}>
+            <h1 id={formTitleId} className={styles.formTitle}>
+              {formTitle}
+            </h1>
+            <p className={styles.formDescription}>{formDescription}</p>
+            {children}
+          </div>
         </div>
       </div>
     </div>

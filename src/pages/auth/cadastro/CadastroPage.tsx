@@ -1,6 +1,5 @@
 import { AuthLayout } from '../../../components/auth-layout/AuthLayout';
 import { usePageMeta } from '../../../hooks/usePageMeta';
-import pulseiraLado from '../../../assets/images/pulseira-lado.avif';
 import { CadastroFormSection } from './sections/CadastroFormSection';
 
 const PAGE_TITLE = 'Criar conta — Zelo';
@@ -14,7 +13,6 @@ export function CadastroPage() {
     <AuthLayout
       panelTitle="Juntos por mais segurança"
       panelDescription="Cadastre-se para começar a usar a pulseira de cuidados e ter acesso a todos os recursos do sistema."
-      panelImage={pulseiraLado}
       formTitleId="cadastro-title"
       formTitle="Cadastro"
       formDescription="Preencha os dados abaixo para criar sua conta."

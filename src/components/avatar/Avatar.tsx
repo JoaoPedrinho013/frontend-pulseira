@@ -1,8 +1,11 @@
+import type { CSSProperties } from 'react';
 import styles from './Avatar.module.css';
 
 interface AvatarProps {
   name: string;
   photoUrl?: string;
+  /** Overrides the default 96px size, e.g. for compact table rows. */
+  size?: number;
 }
 
 function getInitials(name: string): string {
@@ -12,22 +15,28 @@ function getInitials(name: string): string {
   return (first + last).toUpperCase();
 }
 
-export function Avatar({ name, photoUrl }: AvatarProps) {
+export function Avatar({ name, photoUrl, size }: AvatarProps) {
+  const dimension = size ?? 96;
+  const style: CSSProperties | undefined = size
+    ? { width: size, height: size, fontSize: 'var(--font-size-xs)' }
+    : undefined;
+
   if (photoUrl) {
     return (
       <img
         className={styles.avatar}
         src={photoUrl}
         alt={`Caricatura de ${name}`}
-        width={96}
-        height={96}
+        width={dimension}
+        height={dimension}
+        style={style}
         loading="lazy"
       />
     );
   }
 
   return (
-    <span className={styles.avatar} role="img" aria-label={name}>
+    <span className={styles.avatar} style={style} role="img" aria-label={name}>
       <span aria-hidden="true">{getInitials(name)}</span>
     </span>
   );

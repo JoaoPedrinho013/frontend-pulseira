@@ -291,3 +291,34 @@ export function CalendarIcon(props: IconProps) {
     </svg>
   );
 }
+
+export function UsersIcon(props: IconProps) {
+  return (
+    <svg {...baseProps} {...props}>
+      <circle cx="8.5" cy="8" r="3" />
+      <path d="M2.8 19c0-3.3 2.6-5.6 5.7-5.6s5.7 2.3 5.7 5.6" />
+      <circle cx="16.5" cy="9" r="2.4" />
+      <path d="M15 13.6c2.6.3 4.4 2.2 4.4 5" />
+    </svg>
+  );
+}
+
+export function TrashIcon(props: IconProps) {
+  return (
+    <svg {...baseProps} {...props}>
+      <path d="M4 7h16" />
+      <path d="M9.5 7V4.8c0-.6.5-1.1 1.1-1.1h2.8c.6 0 1.1.5 1.1 1.1V7" />
+      <path d="M6.5 7l.8 12.1c.05.9.8 1.6 1.7 1.6h6c.9 0 1.65-.7 1.7-1.6L17.5 7" />
+      <path d="M10.2 11v6M13.8 11v6" />
+    </svg>
+  );
+}
+
+export function PowerIcon(props: IconProps) {
+  return (
+    <svg {...baseProps} {...props}>
+      <path d="M12 3.5v7" />
+      <path d="M7.5 6.2a7 7 0 1 0 9 0" />
+    </svg>
+  );
+}

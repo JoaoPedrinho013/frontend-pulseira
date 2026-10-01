@@ -8,15 +8,15 @@ import { PrivacyPage } from '../pages/privacy/PrivacyPage';
 import { FaqPage } from '../pages/faq/FaqPage';
 import { LoginPage } from '../pages/auth/login/LoginPage';
 import { CadastroPage } from '../pages/auth/cadastro/CadastroPage';
+import { AdminPage } from '../pages/admin/AdminPage';
 
 /**
  * Marketing/institutional routes share MainLayout (header + footer).
- * Auth routes (login/cadastro) render standalone, without the site
- * header/footer, and future screens like the dashboard should follow
- * the same pattern, e.g.:
+ * Auth routes (login/cadastro) and the admin panel render standalone,
+ * without the site header/footer. Future screens like a patient/family
+ * dashboard should follow the same pattern, e.g.:
  *
  * { path: 'dashboard', element: <DashboardPage /> }
- * { path: 'admin', element: <AdminPage /> }
  */
 export const routes: RouteObject[] = [
   {
@@ -33,4 +33,5 @@ export const routes: RouteObject[] = [
   },
   { path: '/login', element: <LoginPage /> },
   { path: '/cadastro', element: <CadastroPage /> },
+  { path: '/admin', element: <AdminPage /> },
 ];

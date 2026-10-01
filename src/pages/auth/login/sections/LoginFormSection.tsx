@@ -13,7 +13,10 @@ export function LoginFormSection() {
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    navigate('/');
+    // Mock de autenticação: sem back-end, só o identificador "admin" decide
+    // o destino do login. Ver AdminPage para a tela de destino.
+    const isAdmin = identificador.trim().toLowerCase() === 'admin';
+    navigate(isAdmin ? '/admin' : '/');
   }
 
   return (

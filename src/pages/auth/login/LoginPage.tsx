@@ -1,6 +1,5 @@
 import { AuthLayout } from '../../../components/auth-layout/AuthLayout';
 import { usePageMeta } from '../../../hooks/usePageMeta';
-import pulseiraFrente from '../../../assets/images/pulseira-frente.avif';
 import { LoginFormSection } from './sections/LoginFormSection';
 
 const PAGE_TITLE = 'Entrar — Zelo';
@@ -14,7 +13,6 @@ export function LoginPage() {
     <AuthLayout
       panelTitle="Mais segurança e tranquilidade para quem você ama"
       panelDescription="A pulseira de cuidados que mantém idosos seguros e suas famílias mais tranquilas."
-      panelImage={pulseiraFrente}
       formTitleId="login-title"
       formTitle="Login"
       formDescription="Bem-vindo de volta! Faça login para continuar."
