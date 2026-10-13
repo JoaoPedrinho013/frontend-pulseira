@@ -1,0 +1,84 @@
+import { useMemo, useState } from 'react';
+import { DashboardLayout } from '../../components/dashboard-layout/DashboardLayout';
+import { Notice } from '../../components/notice/Notice';
+import { usePageMeta } from '../../hooks/usePageMeta';
+import { pacienteMock, pulseiraMock, responsavelMock } from '../../data/pacienteMock';
+import { gerarTelemetriaMock } from '../../data/telemetriaMock';
+import type { InformacoesMedicas } from '../../types/paciente';
+import type { Pulseira } from '../../types/pulseira';
+import type { Responsavel } from '../../types/responsavel';
+import { ConexoesSection } from './sections/ConexoesSection';
+import { StatusAtualSection } from './sections/StatusAtualSection';
+import { DadosMedicosSection } from './sections/DadosMedicosSection';
+import styles from './PacientePage.module.css';
+
+const PAGE_TITLE = 'Minha dashboard — Zelo';
+const PAGE_DESCRIPTION =
+  'Dashboard do paciente: conexão com a pulseira e com o responsável, localização atual e dados médicos.';
+
+export function PacientePage() {
+  usePageMeta({ title: PAGE_TITLE, description: PAGE_DESCRIPTION });
+
+  const [pulseira, setPulseira] = useState<Pulseira>(pulseiraMock);
+  // Já começa vinculado: quem inicia o vínculo é o responsável, digitando o
+  // código do paciente (ver ConexaoPacienteSection) — não tem como "conectar"
+  // o responsável a partir desta página, só desvincular.
+  const [responsavel, setResponsavel] = useState<Responsavel | null>(
+    responsavelMock,
+  );
+  const [informacoesMedicas, setInformacoesMedicas] = useState<InformacoesMedicas>(
+    pacienteMock.informacoesMedicas,
+  );
+  const telemetria = useMemo(() => gerarTelemetriaMock(), []);
+
+  function handleConectarPulseira(dispositivoId: string) {
+    setPulseira({
+      dispositivoId,
+      status: 'conectada',
+      vinculadaEm: new Date().toISOString(),
+    });
+  }
+
+  function handleDesconectarPulseira() {
+    setPulseira((current) => ({ ...current, status: 'desconectada' }));
+  }
+
+  function handleDesconectarResponsavel() {
+    setResponsavel(null);
+  }
+
+  return (
+    <DashboardLayout badgeLabel="Paciente">
+      <div className={styles.page}>
+        <div className={styles.heading}>
+          <h1 className={styles.title}>Olá, {pacienteMock.nome.split(' ')[0]}</h1>
+          <p className={styles.subtitle}>
+            Sua pulseira, seu responsável e sua saúde.
+          </p>
+        </div>
+
+        <Notice>Demonstração: nada aqui é salvo de verdade.</Notice>
+
+        <ConexoesSection
+          pulseira={pulseira}
+          responsavel={responsavel}
+          codigoVinculo={pacienteMock.codigoVinculo}
+          onConectarPulseira={handleConectarPulseira}
+          onDesconectarPulseira={handleDesconectarPulseira}
+          onDesconectarResponsavel={handleDesconectarResponsavel}
+        />
+
+        {pulseira.status === 'conectada' ? (
+          <StatusAtualSection registro={telemetria[0]} />
+        ) : (
+          <Notice>Conecte a pulseira para ver sua localização.</Notice>
+        )}
+
+        <DadosMedicosSection
+          informacoesMedicas={informacoesMedicas}
+          onChange={setInformacoesMedicas}
+        />
+      </div>
+    </DashboardLayout>
+  );
+}

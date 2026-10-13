@@ -23,7 +23,7 @@ export function AdminUsersSection({
 }: AdminUsersSectionProps) {
   function handleDelete(usuario: Usuario) {
     const confirmed = window.confirm(
-      `Excluir a conta de ${usuario.nome}? Essa ação não pode ser desfeita.`,
+      `Excluir ${usuario.nome}? Não dá pra desfazer.`,
     );
     if (confirmed) {
       onDelete(usuario.id);
@@ -32,10 +32,10 @@ export function AdminUsersSection({
 
   return (
     <section className={styles.section} aria-label="Usuários cadastrados">
-      <h2 className={styles.title}>Usuários cadastrados</h2>
+      <h2 className={styles.title}>Usuários</h2>
 
       {usuarios.length === 0 ? (
-        <p className={styles.empty}>Nenhum usuário cadastrado.</p>
+        <p className={styles.empty}>Nenhum usuário.</p>
       ) : (
         <div className={styles.tableWrapper}>
           <table className={styles.table}>

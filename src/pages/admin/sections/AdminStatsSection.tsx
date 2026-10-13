@@ -25,7 +25,7 @@ export function AdminStatsSection({ usuarios }: AdminStatsSectionProps) {
   return (
     <section className={styles.section} aria-label="Resumo de usuários">
       <div className={styles.cards}>
-        <StatCard icon={UsersIcon} value={total} label="Usuários cadastrados" />
+        <StatCard icon={UsersIcon} value={total} label="Usuários" />
         <StatCard icon={HeartPulseIcon} value={totalPacientes} label="Pacientes" />
         <StatCard
           icon={UserIcon}
@@ -35,13 +35,13 @@ export function AdminStatsSection({ usuarios }: AdminStatsSectionProps) {
         <StatCard
           icon={CheckCircleIcon}
           value={totalAtivos}
-          label="Contas ativas"
+          label="Ativos"
         />
       </div>
 
       <div className={styles.charts}>
         <DistributionBar
-          title="Usuários por tipo"
+          title="Por tipo"
           segments={[
             { label: 'Pacientes', value: totalPacientes, variant: 'primary' },
             {
@@ -52,7 +52,7 @@ export function AdminStatsSection({ usuarios }: AdminStatsSectionProps) {
           ]}
         />
         <DistributionBar
-          title="Usuários por status"
+          title="Por status"
           segments={[
             { label: 'Ativos', value: totalAtivos, variant: 'success' },
             { label: 'Inativos', value: totalInativos, variant: 'muted' },

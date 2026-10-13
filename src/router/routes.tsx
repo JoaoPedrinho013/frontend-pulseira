@@ -9,14 +9,14 @@ import { FaqPage } from '../pages/faq/FaqPage';
 import { LoginPage } from '../pages/auth/login/LoginPage';
 import { CadastroPage } from '../pages/auth/cadastro/CadastroPage';
 import { AdminPage } from '../pages/admin/AdminPage';
+import { PacientePage } from '../pages/paciente/PacientePage';
+import { ResponsavelPage } from '../pages/responsavel/ResponsavelPage';
+import { NotFoundPage } from '../pages/not-found/NotFoundPage';
 
 /**
  * Marketing/institutional routes share MainLayout (header + footer).
- * Auth routes (login/cadastro) and the admin panel render standalone,
- * without the site header/footer. Future screens like a patient/family
- * dashboard should follow the same pattern, e.g.:
- *
- * { path: 'dashboard', element: <DashboardPage /> }
+ * Auth routes (login/cadastro) and the dashboards (admin/paciente/
+ * responsavel) render standalone, without the site header/footer.
  */
 export const routes: RouteObject[] = [
   {
@@ -29,9 +29,12 @@ export const routes: RouteObject[] = [
       { path: 'contato', element: <ContactPage /> },
       { path: 'privacidade', element: <PrivacyPage /> },
       { path: 'faq', element: <FaqPage /> },
+      { path: '*', element: <NotFoundPage /> },
     ],
   },
   { path: '/login', element: <LoginPage /> },
   { path: '/cadastro', element: <CadastroPage /> },
   { path: '/admin', element: <AdminPage /> },
+  { path: '/paciente', element: <PacientePage /> },
+  { path: '/responsavel', element: <ResponsavelPage /> },
 ];

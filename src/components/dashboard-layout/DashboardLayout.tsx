@@ -4,13 +4,16 @@ import { siteConfig } from '../../data/siteConfig';
 import { PageContainer } from '../layout/PageContainer';
 import { LinkButton } from '../ui/LinkButton';
 import { ThemeToggle } from '../theme-toggle/ThemeToggle';
-import styles from './AdminLayout.module.css';
+import styles from './DashboardLayout.module.css';
 
-interface AdminLayoutProps {
+interface DashboardLayoutProps {
+  /** Short label next to the brand, e.g. "Admin", "Paciente", "Responsável". */
+  badgeLabel: string;
   children: ReactNode;
 }
 
-export function AdminLayout({ children }: AdminLayoutProps) {
+/** Standalone shell (no site header/footer) shared by /admin, /paciente and /responsavel. */
+export function DashboardLayout({ badgeLabel, children }: DashboardLayoutProps) {
   return (
     <div className={styles.layout}>
       <header className={styles.header}>
@@ -25,7 +28,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
                 height={32}
               />
               <span className={styles.brandName}>{siteConfig.name}</span>
-              <span className={styles.badge}>Admin</span>
+              <span className={styles.badge}>{badgeLabel}</span>
             </Link>
 
             <div className={styles.actions}>

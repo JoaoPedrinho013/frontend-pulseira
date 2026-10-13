@@ -1,0 +1,15 @@
+.section {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: var(--space-4);
+}
+
+.summary {
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+}

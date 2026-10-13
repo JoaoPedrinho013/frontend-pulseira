@@ -1,16 +1,27 @@
+import { classNames } from '../../utils/classNames';
 import type { IconComponent } from '../icons';
 import styles from './StatCard.module.css';
+
+export type StatCardTone = 'primary' | 'success' | 'alert';
 
 interface StatCardProps {
   icon: IconComponent;
   value: number | string;
   label: string;
+  /** Color of the icon chip. Defaults to 'primary'; use 'alert' only for fall-detection status. */
+  tone?: StatCardTone;
 }
 
-export function StatCard({ icon: Icon, value, label }: StatCardProps) {
+const toneClass: Record<StatCardTone, string> = {
+  primary: styles.iconPrimary,
+  success: styles.iconSuccess,
+  alert: styles.iconAlert,
+};
+
+export function StatCard({ icon: Icon, value, label, tone = 'primary' }: StatCardProps) {
   return (
     <div className={styles.card}>
-      <span className={styles.icon}>
+      <span className={classNames(styles.icon, toneClass[tone])}>
         <Icon />
       </span>
       <div className={styles.content}>

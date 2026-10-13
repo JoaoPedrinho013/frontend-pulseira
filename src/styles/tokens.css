@@ -22,14 +22,15 @@
     'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Helvetica, Arial, sans-serif;
 
-  --font-size-xs: 0.75rem;
-  --font-size-sm: 0.875rem;
-  --font-size-md: 1rem;
-  --font-size-lg: 1.125rem;
-  --font-size-xl: 1.375rem;
-  --font-size-2xl: 1.75rem;
-  --font-size-3xl: 2.25rem;
-  --font-size-4xl: 3rem;
+  /* Base +30% (ver "Regras para sessões futuras" no CLAUDE.md). */
+  --font-size-xs: 0.975rem;
+  --font-size-sm: 1.1375rem;
+  --font-size-md: 1.3rem;
+  --font-size-lg: 1.4625rem;
+  --font-size-xl: 1.7875rem;
+  --font-size-2xl: 2.275rem;
+  --font-size-3xl: 2.925rem;
+  --font-size-4xl: 3.9rem;
 
   --font-weight-regular: 400;
   --font-weight-medium: 500;

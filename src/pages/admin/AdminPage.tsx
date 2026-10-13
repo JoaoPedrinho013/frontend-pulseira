@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AdminLayout } from '../../components/admin-layout/AdminLayout';
+import { DashboardLayout } from '../../components/dashboard-layout/DashboardLayout';
 import { Notice } from '../../components/notice/Notice';
 import { usePageMeta } from '../../hooks/usePageMeta';
 import { usuariosMock } from '../../data/usuariosMock';
@@ -34,20 +34,14 @@ export function AdminPage() {
   }
 
   return (
-    <AdminLayout>
+    <DashboardLayout badgeLabel="Admin">
       <div className={styles.page}>
         <div className={styles.heading}>
           <h1 className={styles.title}>Painel administrativo</h1>
-          <p className={styles.subtitle}>
-            Gerencie os usuários cadastrados no Zelo.
-          </p>
+          <p className={styles.subtitle}>Gerencie os usuários do Zelo.</p>
         </div>
 
-        <Notice>
-          Tela de demonstração: os dados são fictícios e vivem só nesta
-          sessão do navegador — ainda não há back-end conectado. Ativar,
-          desativar ou excluir uma conta aqui não persiste.
-        </Notice>
+        <Notice>Demonstração: nada aqui é salvo de verdade.</Notice>
 
         <AdminStatsSection usuarios={usuarios} />
         <AdminUsersSection
@@ -56,6 +50,6 @@ export function AdminPage() {
           onDelete={handleDelete}
         />
       </div>
-    </AdminLayout>
+    </DashboardLayout>
   );
 }

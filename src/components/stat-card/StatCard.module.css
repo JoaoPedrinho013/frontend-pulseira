@@ -17,8 +17,21 @@
   width: 48px;
   height: 48px;
   border-radius: var(--radius-md);
+}
+
+.iconPrimary {
   background: var(--color-primary-soft);
   color: var(--color-primary);
+}
+
+.iconSuccess {
+  background: var(--color-success-soft);
+  color: var(--color-success);
+}
+
+.iconAlert {
+  background: var(--color-alert-soft);
+  color: var(--color-alert);
 }
 
 .content {
